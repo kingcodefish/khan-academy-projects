@@ -19,6 +19,7 @@
 
 /* ----------- VARIABLES ---------- */
 var slideNumber = 0;
+var time = 0;
 var fade = 0;
 var fadeInOut = false;
 var keys = [];
@@ -99,9 +100,52 @@ var menuSlide = function() {
     rect(0, 0, 400, 400);
 };
 var intro = function() {
-    
+    if(time > 0) {
+        background(255, 255, 255);
+        jimmy(250, 150, 100);
+    }
+    if(time > 100) {
+        myTextFill(0, 0, 0);
+        myTextSize(20);
+        myText("THIS IS JIMMY, HE'S A VERY NICE SQUARE.", 5, 20);
+    }
+    if(time > 200) {
+        myText("TIME AFTER TIME HE'S HELPED PEOPLE\nBE BETTER PEOPLE.", 10, 54);
+    }
+    if(time > 300) {
+        myText("THEN ONE DAY HE", 200, 87);
+    }
+    if(time > 350) {
+        myText("WAS TOLD THAT HE HAD TWENTY-FOUR\nHOURS LEFT TO LIVE.", 10, 120);
+    }
+    if(time > 450) {
+        myText("THAT SAME DAY LORD KENNESTRE TOOK", 10, 290);
+    }
+    if(time > 550) {
+        myText("OVER PLANET SQUAREY, AND SO YOU", 10, 320);
+    }
+    if(time > 650) {
+        myText("ARE JIMMY, FIGHTING FOR YOUR LIFE AND\nYOUR PLANET.", 10, 350);
+    }
+    if(time > 700) {
+        fadeInOut = true;
+        if(fadeInOut) {
+            fade+=5;
+        }
+        if(fade >= 255) {
+            fade = 255;
+            fadeInOut = false;
+            slideNumber = 2;
+        }
+    }
+    if(!fadeInOut) {
+        fade-=5;
+    }
+    fill(0, 0, 0, fade);
+    rect(0, 0, 400, 400);
+    time++;
 };
-var level02 = function() {
+var level01 = function() {
     if(!fadeInOut) {
         fade-=5;
     }
@@ -111,7 +155,7 @@ var level02 = function() {
     rect(0, 250, 400, 150);
     jimmy(190, 220, 30);
     
-    textFill = "Welcome to the story of a lonely character.\n                 His name is Jimmy...";
+    textFill = "This is Jimmy. He needs your help to find\nLord Kennestre and save Planet Squarey\nfrom his clutches. Jimmy has been told that\nhe'll die in 24 hours, it's your job to save\nthe world before it's all over.";
     if(textScroller.length !== textFill.length && frameCount % 3 === 0 && fade < 0) {
         textScroller += textFill[textEff];
     }
@@ -136,6 +180,12 @@ var level02 = function() {
 };
 
 /* --------- RENDERING --------- */
+keyPressed = function() {
+    keys[keyCode] = true;
+};
+keyReleased = function() {
+    keys[keyCode] = false;
+};
 mouseMoved = function() {
     switch(slideNumber === 0) {
         case mouseX > 0 && mouseX < 100 && mouseY > 180 && mouseY < 220:
