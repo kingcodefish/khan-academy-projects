@@ -1,0 +1,115 @@
+/****************************************************************
+ *                                                              *
+ *                                                              *
+ *                    ECMAScript 6 Testing                      *
+ *                          By: KCF                             *
+ *                                                              *
+ *                                                              *
+ ****************************************************************/
+ 
+/**
+  * 
+  * This is just a test to see how some ECMAScript 6 stuff works.
+  * In case you don't know, ECMAScript is JavaScript's real name.
+  * ECMAScript 6 is the newest addition to the language that is almost ready for full release.
+  * Some browsers are working on getting most of the new features implemented.
+  * Since Mozilla is behind ECMAScript, Firefox has the most features implemented out of all the browsers.
+  * 
+  * 
+  * WARNING: All of these experiments aren't against Khan Academy guidlines, but they throw errors due to lack of support.
+  * To test them fully, you need to test on other coding grounds.
+  * And yes, I've tried try...catch, it still won't produce the output.
+  * 
+**/
+  
+/** Let the Fun Commence!!!! **/
+
+/* Arrow Functions */
+var arrowFunc = (a, b) => a + b; // Same as var arrowFunc = function(a, b) { return a + b; };
+println(arrowFunc(1, 2)); // Should print "3" but KA blocks arrow function's use due to lack of support.
+
+/* Classes - an alternative to Object Inheritance & Prototypes */
+var Rectangle = class {
+    constructor(x, y, width, height, fill) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.fill = fill;
+    }
+    draw() {
+        rectMode(CENTER);
+        fill(this.fill);
+        rect(this.x, this.y, this.width, this.height);
+    }
+};
+var Square = class extends Rectangle {
+    draw() { // Could've used super(), but we want to change functionality, not add onto it.
+        rectMode(CENTER);
+        fill(this.fill);
+        rect(this.x, this.y, this.width, this.width);
+        println("Make sure that you're making the length of every side of the square the third argument.");
+    }
+};
+var squ = new Square(200, 200, 50, 0, fill(0, 0, 0));
+squ.draw();
+
+/* Predefined parameters - an alternative to ternary or the operator '||' */
+var add = function(a = 3, b = 3) {
+    return a + b;
+};
+println(add()); // Returns "6", that's if KA supported it :P
+
+/* Maps - an implementation of Object keys */
+var bla = new Map();
+bla.set(ohNoesIsTerribleAtParsingES6, "Oh Noes!!!");
+bla.set(winstonEatsDonuts, "He Does!");
+bla.set(hopperThinksHesCool, "But he's not!");
+println(bla.size); // Should print "3", but obviously, KA doesn't support ES6
+println(bla.get(ohNoesIsTerribleAtParsingES6)); // Should print "Oh Noes!!!"
+println(bla.get(winstonEatsDonuts)); // Should print "He Does!"
+println(bla.get(hopperThinksHesCool)); // Should print "But he's not!"
+
+/* let - keeps scope made to the current statement rather than hoisting to the top of the function. */
+for(var i = 0; i < 5; i++) {
+    // Do nothing
+}
+println(i); // Prints "5", goes to show that the variable can be used outside the for loop because it was "hoisted" to the top of the current function's scope.
+for(let j = 0; j < 5; j++) {
+    // Do nothing
+}
+println(j); // Throws an error, that's because let is encapsulated to the for loop's scope, rather than the function's scope.
+
+/* for...of, loops through the array's property values rather than property names */
+var exArray = [3, 5, 7];
+exArray.ohnoes = ":P";
+
+for(i in exArray) {
+    println(i); // Prints "0", "1", "2", "ohnoes"
+}
+for(i of exArray) {
+    println(i); // Prints "3", "5", "7", it won't print strings as of yet
+}
+
+/* Generator Functions - A New Kind Of Function */
+function* anotherGenerator(i) {
+    yield i + 1;
+    yield i + 2;
+    yield i + 3;
+}
+
+function* generator(i) {
+    yield i;
+    yield* anotherGenerator(i);
+    yield i + 10;
+}
+
+var gen = generator(10);
+
+println(gen.next().value); // 10
+println(gen.next().value); // 11
+println(gen.next().value); // 12
+println(gen.next().value); // 13
+println(gen.next().value); // 20
+
+/* I see you wanted to see how many lines it was. Well it's 115 :P */
