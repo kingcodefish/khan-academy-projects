@@ -1,0 +1,112 @@
+/****************************************************************
+ *                                                              *
+ *                                                              *
+ *                    2D Game Boilerplate                       *
+ *                          By: KCF                             *
+ *                                                              *
+ *                                                              *
+ ****************************************************************/
+ 
+/**
+  * 
+  * This is a base template for making 2D games on KA.
+  * That way you can just brainstorm ideas, copy-paste, and code.
+  * 
+  * Please supply a single-line comment near the top of your code with the following comment to give a bit of credit for my work:
+  *     // Credit to KingCodeFish for the boilerplate this project is based on
+  * 
+  * It has already been outputted in the template, but please don't remove it.
+**/
+
+/* -------------------------------------------------- COPY FROM HERE DOWN -------------------------------------------------- */
+
+// Credit to KingCodeFish for the boilerplate this project is based on
+
+/**
+  * 
+  * @button(
+  *     @x - x position of center of button
+  *     @y - y position of center of button
+  *     @wid - The width of the button
+  *     @hei - The height of the button
+  *     @radius - The radius of the button
+  *     @tex - The text to be displayed in the button in the form of a string
+  *     @textSi - The text size of the text to be displayed in the button
+  *     @textFill - The color to fill the text with.
+  *     @hoverTextFill - The hover color of the text.
+  *     @fi - The background fill of the button.
+  *     @hoverFi - The hover background fill of the button.
+  *     @stro - The stroke color of the button.
+  *     @stroWei - The stroke weight of the button.
+  *     @hoverStro - The hover stroke color of the button.
+  *     @hoverStroWei - The hover stroke weight of the button.
+  * );
+  * 
+**/
+
+
+/* --- GLOBAL VARIABLES --- */
+var gameStateNumber = 0;
+var keys = [];
+var mouseOverButton = "";
+
+/* --- BUTTON FUNCTION --- */
+var button = function(x, y, wid, hei, radius, tex, textSi, textFill, hoverTextFill, fi, hoverFi, stro, stroWei, hoverStro, hoverStroWei) {
+    if(abs(x - mouseX) <= wid / 2 && abs(y - mouseY) <= hei / 2) {
+        if(mouseIsPressed) {
+            mouseOverButton = tex;
+        }
+        fill(hoverFi);
+        stroke(hoverStro);
+        strokeWeight(hoverStroWei);
+    } else {
+        fill(fi);
+        stroke(stro);
+        strokeWeight(stroWei);
+    }
+    rectMode(CENTER);
+    rect(x, y, wid, hei, radius);
+    if(abs(x - mouseX) <= wid / 2 && abs(y - mouseY) <= hei / 2) {
+        fill(hoverTextFill);
+    } else {
+        fill(textFill);
+    }
+    textAlign(CENTER, CENTER);
+    textSize(textSi);
+    text(tex, x, y);
+};
+
+/* --- SLIDES --- */
+var menu = function() {
+    background(0, 200, 200);
+    textSize(60);
+    text("(Game Title)", 200, 100);
+    button(200, 200, 130, 33, 10, "Play", 24, color(0, 0, 0), color(82, 82, 82), color(255, 255, 255), color(200, 200, 200, 100), color(0, 0, 0, 100), 2, color(0, 0, 0, 100), 2);
+    button(200, 240, 130, 33, 10, "Options", 24, color(0, 0, 0), color(82, 82, 82), color(255, 255, 255), color(200, 200, 200, 100), color(0, 0, 0, 100), 2, color(0, 0, 0, 100), 2);
+    button(200, 280, 130, 33, 10, "Credits", 24, color(0, 0, 0), color(82, 82, 82), color(255, 255, 255), color(200, 200, 200, 100), color(0, 0, 0, 100), 2, color(0, 0, 0, 100), 2);
+}; // Draw the main menu screen in here, this is an example menu
+var level01 = function() {
+    background(0, 0, 0);
+}; // Draw the first level in here
+
+/* --- RENDERING AND INPUT --- */
+mouseReleased = function() {
+    switch(mouseOverButton) {
+        case "Play": // Change this to correspond with the button text of the button you want to perform the action on.
+            gameStateNumber = 3; // Do action here for the corresponding button.
+            break; // Copy-and-paste more of the case...break scenarios if you want more button actions.
+    }
+};
+keyPressed = function() {
+    keys[keyCode] = true;
+};
+keyPressed = function() {
+    keys[keyCode] = false;
+};
+draw = function() {
+    switch(gameStateNumber) {
+        case 0: // When gameStateNumber equals 0, draw the menu, this is by default
+            menu();
+            break;
+    }
+};
