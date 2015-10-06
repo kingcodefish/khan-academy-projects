@@ -1,0 +1,121 @@
+/****************************************************************
+ *                                                              *
+ *                                                              *
+ *               What's for Dinner? - The Game                  *
+ *                          By: KCF                             *
+ *                                                              *
+ *                                                              *
+ ****************************************************************/
+
+var sceneNumber = 1;
+var menuY = 0;
+
+var recipes = [
+    {
+        title: "Spaghetti",
+        hovered: false
+    },
+    {
+        title: "Eggs",
+        hovered: false
+    },
+    {
+        title: "Sausage",
+        hovered: false
+    },
+    {
+        title: "Lasagna",
+        hovered: false
+    },
+    {
+        title: "Hamburgers",
+        hovered: false
+    },
+    {
+        title: "Tacos",
+        hovered: false
+    },
+    {
+        title: "Sandwiches",
+        hovered: false
+    },
+    {
+        title: "Salads",
+        hovered: false
+    },
+    {
+        title: "Smoothies",
+        hovered: false
+    },
+    {
+        title: "Pizza",
+        hovered: false
+    }
+];
+
+var menu = function() {
+    background(255, 255, 255);
+    textAlign(CENTER, CENTER);
+    fill(77, 77, 77);
+    textFont(createFont("sans-serif"), 30);
+    text("What's for\nDinner?", 300, 170);
+    fill(87, 87, 87);
+    textSize(15);
+    text("Pick a recipe from the left\nto start cooking.", 300, 230);
+    
+    stroke(204, 204, 204);
+    strokeWeight(2);
+    line(200, 0, 200, 400);
+    
+    if(menuY > 0) {
+        menuY = 0;
+    } else if(-menuY > (recipes.length-8) * 50) {
+        menuY = -((recipes.length-8) * 50);
+    }
+    for(var i = 0; i < recipes.length; i++) {
+        if(recipes[i].hovered) {
+            fill(225, 225, 225);
+        } else {
+            fill(245, 245, 245);
+        }
+        rect(0, i * 50 + menuY, 200, 50);
+        fill(77, 77, 77);
+        text(recipes[i].title, 100, i * 50 + 25 + menuY);
+    }
+};
+
+mouseMoved = function() {
+    if(mouseX < 200) {
+        for(var i = 0; i < recipes.length; i++) {
+            if(mouseY > i * 50 + menuY && mouseY < i * 50 + menuY + 50) {
+                recipes[i].hovered = true;
+            } else {
+                recipes[i].hovered = false;
+            }
+        }
+    } else {
+        for(var i = 0; i < recipes.length; i++) {
+            recipes[i].hovered = false;
+        }
+    }
+};
+
+mouseDragged = function() {
+    if(mouseX < 200) {
+        if(mouseY - pmouseY < 0 && -menuY < (recipes.length-8) * 50) {
+            menuY += mouseY - pmouseY;
+        }
+        if(mouseY - pmouseY > 0 && menuY <= 0) {
+            menuY += mouseY - pmouseY;
+        }
+    }
+};
+
+draw = function() {
+    strokeWeight(1);
+    switch(sceneNumber) {
+        case 1: {
+            menu();
+        }
+    }
+};
