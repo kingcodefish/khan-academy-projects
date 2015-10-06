@@ -24,20 +24,20 @@ mouseClicked = function() {
 draw = function() {
     background(59, 115, 172);
     strokeJoin(ROUND);
-    /** Chewie's Head **/
+    /** Chewie's Hair **/
     beginShape();
         fill(161, 112, 80);
-        vertex(82, 19);
+        vertex(82, 15);
         bezierVertex(72, 14, 58, 16, 56, 19);
         bezierVertex(64, 17, 69, 19, 73, 20);
         bezierVertex(66, 22, 60, 33, 60, 31);
         bezierVertex(62, 37, 62, 28, 72, 24);
         bezierVertex(70, 30, 61, 33, 56, 48);
         vertex(66, 39);
-        bezierVertex(62, 46, 65, 39, 59, 57);
-        vertex(62, 65);
-        vertex(64, 65);
-        vertex(62, 95);
+        bezierVertex(62, 46, 65, 38, 59, 57);
+        vertex(62, 53);
+        vertex(64, 55);
+        vertex(61, 95);
         vertex(71, 102);
         vertex(67, 92);
         vertex(75, 97);
@@ -46,5 +46,26 @@ draw = function() {
         vertex(108, 90);
         bezierVertex(95, 57, 106, 49, 132, 61);
         vertex(140, 47);
+        bezierVertex(144, 42, 136, 28, 130, 25);
+        vertex(111, 11);
+        vertex(119, 21);
+        bezierVertex(110, 16, 92, 14, 82, 15);
+    endShape();
+    /** Chewie's Face & Body **/
+    beginShape();
+        fill(223, 174, 134);
+        vertex(141, 45);
+        vertex(141, 63);
+        vertex(149, 84);
+        vertex(153, 79);
+        vertex(154, 81);
+        vertex(150, 85);
+        vertex(153, 85);
+        vertex(150, 87);
+        bezierVertex(151, 90, 149, 113, 136, 127);
+        bezierVertex(133, 130, 150, 130, 155, 126);
+        bezierVertex(141, 134, 149, 130, 138, 133);
+        bezierVertex(141, 134, 147, 133, 155, 142);
+        bezierVertex(143, 139, 148, 140, 141, 141);
     endShape();
 };
