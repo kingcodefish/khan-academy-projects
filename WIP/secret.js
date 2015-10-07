@@ -51,9 +51,9 @@ draw = function() {
         vertex(119, 21);
         bezierVertex(110, 16, 92, 14, 82, 15);
     endShape();
-    /** Chewie's Face & Body **/
+    /** Chewie's Face & Middle Torso Above Belt **/
     beginShape();
-        fill(223, 174, 134);
+        fill(194, 151, 119);
         vertex(141, 45);
         vertex(141, 63);
         vertex(149, 84);
@@ -67,5 +67,9 @@ draw = function() {
         bezierVertex(141, 134, 149, 130, 138, 133);
         bezierVertex(141, 134, 147, 133, 155, 142);
         bezierVertex(143, 139, 148, 140, 141, 141);
+        bezierVertex(150, 149, 146, 145, 152, 153);
+        bezierVertex(150, 153, 146, 148, 144, 151);
+        bezierVertex(136, 169, 142, 162, 126, 190);
+        vertex(116, 146);
     endShape();
 };
