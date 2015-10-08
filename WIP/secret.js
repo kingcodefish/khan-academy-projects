@@ -17,6 +17,9 @@
  */
 /** Dev picture reference: https://www.google.com/search?espv=2&biw=1920&bih=955&tbm=isch&sa=1&q=cartoon+chewbacca&oq=cartoon+chewbacca&gs_l=img.3..0l2j0i5i30j0i8i30l3.73565.78068.0.78176.26.22.0.0.0.0.86.1248.21.21.0....0...1.1.64.img..8.18.1089.7Xq6urmdO2k#imgrc=Rz_ZA5xfzPjPmM%3A **/
 
+var _help = function() {
+};
+
 mouseClicked = function() {
     println(mouseX + ", " + mouseY);
 };
@@ -69,7 +72,13 @@ draw = function() {
         bezierVertex(143, 139, 148, 140, 141, 141);
         bezierVertex(150, 149, 146, 145, 152, 153);
         bezierVertex(150, 153, 146, 148, 144, 151);
-        bezierVertex(136, 169, 142, 162, 126, 190);
-        vertex(116, 146);
+        bezierVertex(139, 174, 145, 170, 125, 199);
+        vertex(114, 162);
+        vertex(118, 166);
+        vertex(109, 140);
+        vertex(114, 148);
+        bezierVertex(110, 138, 110, 137, 103, 132);
+        vertex(111, 136);
+        bezierVertex(101, 118, 88, 111, 80, 120);
     endShape();
 };
